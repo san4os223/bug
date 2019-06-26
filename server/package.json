@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bower": "^1.8.8",
+    "express": "^4.17.0",
+    "html-entities": "^1.2.1",
+    "mongoose": "^5.5.14",
+    "node-gyp": "^4.0.0",
+    "qstore": "^0.7.10",
+    "request": "^2.88.0",
+    "socket.io": "^1.7.4",
+    "socket.io-client": "^1.7.4"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "Бій жуків",
+  "description": "HTML5 multiplayer game",
+  "version": "0.1.1",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": "",
+  "license": "nom"
+}

@@ -1,0 +1,178 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>БІЙ ЖУКІВ</title>
+	<meta name="description" content="Бій Жуків HTML5 multiplayer game">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="bower_components/qstore/qstore.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/jquery.cookie/jquery.cookie.js"></script>
+	<script src="bower_components/socket.io-client/socket.io.js"></script>
+	<script src="js/class.js"></script>
+	<script src="js/game.js"></script>
+	<script src="js/player.js"></script>
+	<script src="js/panel.js"></script>
+	<script src="js/math.js"></script>
+	<script src="js/fxText.js"></script>
+	<script src="js/fxLine.js"></script>
+	<script src="js/sprite.js"></script>
+	<script src="js/blood.js"></script>
+	<script src="js/bonus.js"></script>
+	<script src="js/block.js"></script>
+	<script src="js/bug.js"></script>
+	<script src="js/target.js"></script>
+	<script src="js/bullet.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/map.js"></script>
+	<script src="js/maps/fourSectors.js"></script>
+	<script src="js/maps/dogfight.js"></script>
+	<script src="js/maps/zombie.js"></script>
+	<script src="js/maps/tastylands.js"></script>
+	<script src="js/maps/hello.js"></script>
+	<script type="application/javascript">
+		let app = express();
+
+
+		app.listen(3000, () => {
+			console.log("Example app listening on port 3000");
+			//console.log(people);
+		});//слухання порта 3000
+
+		function show_prompt() {
+			const name = prompt('Please enter your name');
+			if (name != null && name != "") {
+				alert(name);
+			}
+		}
+		show_prompt();
+	</script>
+	
+</head>
+<body>
+<div class="app-container">
+	<div class="game">
+		<div class="arena"></div>
+		<div class="panel">
+			<h2>БІЙ ЖУКІВ</h2>
+
+			<div class="btn find-games when-menu">Пошук гри</div>
+			<div class="btn join when-menu">Підключення по IP</div>
+			<div class="btn help when-menu">Допомога</div>
+
+			<div class="players screen when-game">
+				<div class="label">Гравці</div>
+				<div class="list"></div>
+			</div>
+
+			<div class="messages screen when-game">
+				<div class="label">Повідомлення</div>
+				<div class="list">
+				</div>
+			</div>
+
+			<div class="message-input when-game">
+				<input name="message" placeholder="message here"/>
+				<div class="btn send">Відправити</div>
+			</div>
+			<a class="when-menu" href=" "><img style="position: absolute; top: 0; left: -540px; border: 0;" src="" alt="Дипломна робота - Гарасимовича Олександра" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_orange_ff7600.png"></a>
+			<div class="dlg connection">
+				<div class="form">
+					Your name:
+					<input name="name" value=""/>
+					Server:
+					<input name="address" value=""/>
+					<div class="btn connect">Connect</div>
+					<div class="btn close">Close</div>
+				</div>
+				<div class="connecting">
+					Connecting...
+				</div>
+				<div class="error">
+					Unable to connect to server.
+					<div class="btn close">Close</div>
+				</div>
+			</div>
+
+
+			<div class="dlg wait-room">
+				<div class="title"></div>
+				<table class="table connected-players">
+					<thead>
+						<th>Гравець</th><th>Команда</th><th>Статус</th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="btn ready"> </div>
+				<div class="btn disconnect">Disconnect</div>
+			</div>
+
+			<div class="dlg results">
+				<div class="title"></div>
+				<table class="table">
+					<thead>
+					<th>Player</th><th>Kills</th><th>Bugs</th><th>Items</th>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+				<div class="btn reset">Close</div>
+			</div>
+
+			<div class="dlg games">
+				<div class="title">Game servers</div>
+				<div class="load-state loading">Search games...</div>
+				<div class="load-state done">
+					<table class="table interactive">
+						<thead>
+							<th>name</th>
+							<th>address</th>
+							<th>players</th>
+							<th>map</th>
+							<th>v</th>
+						</thead>
+						<tbody>
+
+						</tbody>
+					</table>
+					<div class="btn find-games">Refresh</div>
+				</div>
+				<div class="load-state error">No games found</div>
+				<div class="btn close">Close</div>
+			</div>
+
+			<div class="dlg help">
+				<div class="title">Інформація про гру </div>
+				<table class="table">
+					<tbody>
+						<tr>
+							<td><div class=" go-bonus bonus-apple"></div></td>
+							<td>Відновлює 50 очок здоров'я (hp). Якщо hp повне, то він дає ваші додаткові 15 очок для максимального здоров'я </td>
+						</tr>
+						<tr>
+							<td><div class=" go-bonus bonus-pepper"></div></td>
+							<td>Збільшеня атаки на 5 очок (dm)</td>
+						</tr>
+						<tr>
+							<td><div class=" go-bonus bonus-cake"></div></td>
+							<td>Дає 5 очок досвіду (xp). Зберіть 15 xp для появи ще одного жука</td>
+						</tr>
+						<tr>
+							<td><div class=" go-bonus bonus-acorn"></div></td>
+							<td>Жолудь завдає удару по противнику з 3-кратним пошкодженням. Також дає 2xp</td>
+						</tr>
+						<tr>
+							<td><div class=" go-bonus bonus-amanita"></div></td>
+							<td>Дозволяє зняти отруту з 1x пошкодженням у противника. Також дає 1xp</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn close">Закрити</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+</body>
+</html>
