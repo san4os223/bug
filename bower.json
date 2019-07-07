@@ -1,15 +1,15 @@
 {
-  "name": "bugs arena",
+  "name": "",
   "version": "1.0.0",
-  "homepage": "https://github.com/holiber/bugs-arena",
+  "homepage": "",
   "authors": [
-    "alexclimber <kadabrik91@gmail.com>"
+    ""
   ],
-  "description": "HTML5 multiplayer game",
+  "description": "",
   "keywords": [
-    "multiplayer",
-    "html5",
-    "websockets",
+    "",
+    "",
+    "",
     "game"
   ],
   "license": "MIT",
