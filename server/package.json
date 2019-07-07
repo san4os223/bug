@@ -15,7 +15,7 @@
     "start": "node server.js"
   },
   "name": "Бій жуків",
-  "description": "HTML5 multiplayer game",
+  "description": "game",
   "version": "0.1.1",
   "main": "server.js",
   "devDependencies": {},
