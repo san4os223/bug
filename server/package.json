@@ -8,7 +8,7 @@
     "node-gyp": "^4.0.0",
     "qstore": "^0.7.10",
     "request": "^2.88.0",
-    "socket.io": "^1.7.4",
+    "socket.io": "^2.4.0",
     "socket.io-client": "^1.7.4"
   },
   "scripts": {
